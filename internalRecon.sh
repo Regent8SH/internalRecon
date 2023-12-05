@@ -33,6 +33,6 @@ else
     echo "Extracting DC IP addresses with ping and saving to $wd/Recon/dcIpAddresses.txt"
     for ip in $(cat Recon/dcHostnames.txt); do ping $ip -c 1 | grep -i '64 bytes' | cut -d '(' -f 2 | cut -d ')' -f 1 >> Recon/dcIpAddresses.txt; done
 
-    echo 'Checking DCs for LDAP Signing? (Y/N): '
+    echo 'Checking DCs for LDAP Signing?: '
     crackmapexec ldap Recon/dcIpAddresses.txt -M ldap-signing
 fi
